@@ -9,22 +9,21 @@ if (process.env.JAWSDB_URL) {
 } else {
     // If the server lacks the variable, it falls back on an explicitly defined local database.
     connection = mysql.createConnection({
-        port: 3306,
         host: "localhost",
         user: "root",
-        password: "",
+        password: "root",
         database: "burgers_db"
     });
 };
 
 // Make connection.
-connection.connect(function (err) {
-    if (err) {
-        console.error("error connecting: " + err.stack);
-        return;
-    }
-    console.log("connected as id " + connection.threadId);
-});
+// connection.connect(function (err) {
+//     if (err) {
+//         console.error("error connecting: " + err.stack);
+//         return;
+//     }
+//     console.log("connected as id " + connection.threadId);
+// });
 
-// Export connection for our ORM to use.
+connection.connect();
 module.exports = connection;
